@@ -99,7 +99,7 @@ const toBill = (r: BillRow): Bill => ({ id: r.id, customerId: r.customer_id, cus
 const toStaff = (r: StaffRow): Staff => ({ id: r.id, staffId: r.staff_id, name: r.name, username: r.username, password: r.password, createdAt: r.created_at, createdBy: r.created_by, active: r.active });
 const toStaffHistory = (r: StaffHistoryRow): StaffHistory => ({ id: r.id, action: r.action, staffId: r.staff_id, name: r.name, username: r.username, performedBy: r.performed_by, performedAt: r.performed_at });
 
-export const dataMode = "supabase";
+// export const dataMode = "supabase";
 
 export const mockApi = {
   login: async (username: string, password: string) => {
