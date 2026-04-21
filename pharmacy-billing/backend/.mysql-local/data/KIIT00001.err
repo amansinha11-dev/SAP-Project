@@ -1,0 +1,10 @@
+2026-04-21T08:19:27.065681Z 0 [System] [MY-010116] [Server] C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe (mysqld 8.0.41) starting as process 9364
+2026-04-21T08:19:27.135025Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+2026-04-21T08:19:27.768145Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+2026-04-21T08:19:28.112138Z 0 [System] [MY-010229] [Server] Starting XA crash recovery...
+2026-04-21T08:19:28.126614Z 0 [System] [MY-010232] [Server] XA crash recovery finished.
+2026-04-21T08:19:28.233386Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+2026-04-21T08:19:28.235443Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
+2026-04-21T08:19:28.287809Z 0 [System] [MY-010931] [Server] C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe: ready for connections. Version: '8.0.41'  socket: ''  port: 3307  MySQL Community Server - GPL.
+2026-04-21T08:23:01.211015Z 11 [Warning] [MY-010235] [Server] Following users were specified in CREATE USER IF NOT EXISTS but they already exist. Corresponding entry in binary log used default authentication plugin 'caching_sha2_password' to rewrite authentication information (if any) for them: 'pharmacy_user'@'localhost'
+2026-04-21T08:23:01.221833Z 11 [Warning] [MY-010235] [Server] Following users were specified in CREATE USER IF NOT EXISTS but they already exist. Corresponding entry in binary log used default authentication plugin 'caching_sha2_password' to rewrite authentication information (if any) for them: 'pharmacy_user'@'127.0.0.1'

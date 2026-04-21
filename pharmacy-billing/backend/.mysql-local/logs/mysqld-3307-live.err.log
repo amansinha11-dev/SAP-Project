@@ -1,0 +1,7 @@
+2026-04-21T08:19:10.437097Z 0 [System] [MY-010116] [Server] C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe (mysqld 8.0.41) starting as process 15376
+2026-04-21T08:19:10.437175Z 0 [ERROR] [MY-010338] [Server] Can't find error-message file 'C:\Program\share\errmsg.sys'. Check error-message file location and 'lc-messages-dir' configuration directive.
+2026-04-21T08:19:10.438745Z 0 [Warning] [MY-010091] [Server] Can't create test file C:\Users\KIIT0001\Desktop\SAP\mysqld_tmp_file_case_insensitive_test.lower-test
+2026-04-21T08:19:10.438809Z 0 [Warning] [MY-010091] [Server] Can't create test file C:\Users\KIIT0001\Desktop\SAP\mysqld_tmp_file_case_insensitive_test.lower-test
+2026-04-21T08:19:10.439076Z 0 [ERROR] [MY-013276] [Server] Failed to set datadir to 'C:\Users\KIIT0001\Desktop\SAP\' (OS errno: 2 - No such file or directory)
+2026-04-21T08:19:10.440687Z 0 [ERROR] [MY-010119] [Server] Aborting
+2026-04-21T08:19:10.440804Z 0 [System] [MY-010910] [Server] C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe: Shutdown complete (mysqld 8.0.41)  MySQL Community Server - GPL.
