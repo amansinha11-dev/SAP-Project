@@ -2,6 +2,7 @@ package com.pharmacy.controller;
 
 import com.pharmacy.model.Medicine;
 import com.pharmacy.repository.MedicineRepository;
+import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,8 @@ public class MedicineController {
   @PostMapping("/deduct")
   public ResponseEntity<Void> deductStock(@RequestBody List<DeductItem> items) {
     items.forEach(item -> {
-      Medicine m = repository.findById(item.medicineId).orElseThrow();
+      Long medicineId = Objects.requireNonNull(item.medicineId, "medicineId is required");
+      Medicine m = repository.findById(medicineId).orElseThrow();
       if (m.getQuantity() < item.quantity) {
         throw new IllegalArgumentException("Insufficient stock for " + m.getName());
       }
@@ -38,7 +40,8 @@ public static class DeductItem {
   
   @GetMapping("/{id}")
   public ResponseEntity<Medicine> getMedicine(@PathVariable Long id) {
-    return repository.findById(id)
+    Long safeId = Objects.requireNonNull(id, "id is required");
+    return repository.findById(safeId)
       .map(ResponseEntity::ok)
       .orElse(ResponseEntity.notFound().build());
   }

@@ -11,12 +11,15 @@ if (-not (Test-Path ".\mvnw.cmd")) {
   exit 1
 }
 
-$existing = Get-NetTCPConnection -LocalPort 9090 -State Listen -ErrorAction SilentlyContinue
-if ($existing) {
-  $pid = $existing[0].OwningProcess
-  $proc = Get-Process -Id $pid -ErrorAction SilentlyContinue
-  Write-Host "Port 9090 already in use by PID $pid $($proc.ProcessName)."
-  Write-Host "Stop that process first, then retry."
+$portLine = netstat -ano | Select-String ":9090" | Select-Object -First 1
+if ($portLine) {
+  Write-Host "Port 9090 already in use. Stop the existing process first, then retry."
+  exit 1
+}
+
+$jdkHome = if ($env:JAVA_HOME) { $env:JAVA_HOME } else { "" }
+if ([string]::IsNullOrWhiteSpace($jdkHome)) {
+  Write-Host "JAVA_HOME is not set. Please install JDK 17+ and set JAVA_HOME."
   exit 1
 }
 

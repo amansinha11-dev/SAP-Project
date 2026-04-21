@@ -4,11 +4,11 @@ import com.pharmacy.model.Bill;
 import com.pharmacy.model.BillItem;
 import com.pharmacy.repository.BillRepository;
 import com.pharmacy.repository.MedicineRepository;
+import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api/bills")
@@ -22,7 +22,8 @@ public class BillController {
   public ResponseEntity<Bill> createBill(@RequestBody BillRequest request) {
     // Deduct stock first
     request.items.forEach(item -> {
-      var m = medicineRepo.findById(item.medicineId).orElseThrow();
+      Long medicineId = Objects.requireNonNull(item.medicineId, "medicineId is required");
+      var m = medicineRepo.findById(medicineId).orElseThrow();
       if (m.getQuantity() < item.quantity) {
         throw new IllegalArgumentException("Insufficient stock for " + m.getName());
       }

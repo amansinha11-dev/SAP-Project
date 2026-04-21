@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.Instant;
 import java.util.Map;
-import java.util.Map;
+import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -25,11 +25,23 @@ public class HealthController {
 
     @GetMapping("/api/health/db")
     public Map<String, Object> dbHealth() {
-        try (Connection conn = jdbcTemplate.getDataSource().getConnection()) {
+        DataSource dataSource = jdbcTemplate.getDataSource();
+        if (dataSource == null) {
+            return Map.of(
+                "status", "DOWN",
+                "database", "MySQL - pharmacy_db",
+                "error", "DataSource is not configured",
+                "connected", false,
+                "timestamp", Instant.now().toString()
+            );
+        }
+
+        try (Connection ignored = dataSource.getConnection()) {
+            Integer ping = jdbcTemplate.queryForObject("SELECT 1", Integer.class);
             return Map.of(
                 "status", "UP",
                 "database", "MySQL - pharmacy_db",
-                "connected", true,
+                "connected", ping != null && ping == 1,
                 "timestamp", Instant.now().toString()
             );
         } catch (SQLException e) {
