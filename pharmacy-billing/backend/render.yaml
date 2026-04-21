@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: pharmacy-backend
+    env: java
+    buildCommand: "./mvnw clean package -DskipTests"
+    startCommand: "java -jar target/pharmacy-billing-0.0.1-SNAPSHOT.jar"
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
